@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesothelioma Compensation Calculator | Bowmans Attorney</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e67e22;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --danger: #e74c3c;
+            --success: #27ae60;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-attachment: fixed;
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .attorney-advertising {
+            background: white;
+            color: black;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .disclaimer {
+            background: #f8f9fa;
+            color: #666;
+            font-size: 10px;
+            padding: 12px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #f5c6cb;
+        }
+        
+        .calculator-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .calculator {
+            flex: 1 1 700px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 0 0 10px 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .info-panel {
+            flex: 1 1 400px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .step {
+            display: none;
+        }
+        
+        .step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .range-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-next {
+            background: var(--success);
+        }
+        
+        .btn-next:hover {
+            background: #219653;
+        }
+        
+        .btn-back {
+            background: #95a5a6;
+        }
+        
+        .btn-back:hover {
+            background: #7f8c8d;
+        }
+        
+        .btn-call {
+            background: var(--accent);
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            margin: 20px 0;
+        }
+        
+        .btn-call:hover {
+            background: #d35400;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: var(--light);
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .result {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .result-value {
+            font-size: 3rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin: 1rem 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .result-note {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .info-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card h3 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .factors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .factor {
+            flex: 1 1 200px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .factor i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--dark);
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .privacy-link {
+            color: #3498db;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-container {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .range-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="attorney-advertising">ATTORNEY ADVERTISING</div>
+        <div class="disclaimer">
+            No guarantee of recovery. Bowmans Attorney is responsible for this advertisement. Prior results do not predict future outcomes. No attorney-client relationship created by use of this calculator. Licensed in TX, CA, FL, NY. Consultation does not create duty. If you are already represented, disregard this message.
+        </div>
+        
+        <header>
+            <h1><i class="fas fa-balance-scale"></i> Mesothelioma Compensation Calculator</h1>
+            <p class="tagline">Find out your potential compensation with Bowmans Attorney</p>
+        </header>
+        
+        <div class="alert">
+            <strong><i class="fas fa-exclamation-triangle"></i> Important:</strong> This calculator provides an estimate only and is not a guarantee of compensation. Consult with a qualified attorney for professional advice about your specific case.
+        </div>
+        
+        <div class="calculator-container">
+            <div class="calculator">
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                
+                <div class="step active" id="step1">
+                    <h2><i class="fas fa-user"></i> Personal Information</h2>
+                    <div class="form-group">
+                        <label for="age">Age <span class="required">*</span></label>
+                        <input type="number" id="age" min="18" max="100" placeholder="Enter your age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State of Residence <span class="required">*</span></label>
+                        <select id="state" required>
+                            <option value="">Select your state</option>
+                            <option value="ca">California</option>
+                            <option value="tx">Texas</option>
+                            <option value="fl">Florida</option>
+                            <option value="ny">New York</option>
+                            <option value="il">Illinois</option>
+                            <option value="pa">Pennsylvania</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Have you been diagnosed with mesothelioma? <span class="required">*</span></label>
+                        <div>
+                            <input type="radio" id="diagnosis-yes" name="diagnosis" value="yes" required>
+                            <label for="diagnosis-yes" style="display: inline-block; margin-right: 15px;">Yes</label>
+                            <input type="radio" id="diagnosis-no" name="diagnosis" value="no">
+                            <label for="diagnosis-no" style="display: inline-block;">No</label>
+                        </div>
+                    </div>
+                    <div class="navigation">
+                        <div></div>
+                        <button class="btn btn-next" onclick="showStep(2)">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="step" id="step2">
+                    <h2><i class="fas fa-address-card"></i> Contact Information</h2>
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="navigation">
+                        <button class="btn btn-back" onclick="showStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button class="btn btn-next" onclick="validateContactInfo()">See Estimate <i class="fas fa-calculator"></i></button>
+                    </div>
+                </div>
+                
+                <div class="step" id="step3">
+                    <h2><i class="fas fa-briefcase-medical"></i> Exposure History</h2>
+                    <div class="form-group">
+                        <label for="exposure-duration">Years of Asbestos Exposure</label>
+                        <div class="range-container">
+                            <input type="range" id="exposure-duration" min="1" max="40" value="10">
+                            <span class="range-value" id="exposure-duration-value">10</span> years
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="occupation">Primary Occupation During Exposure</label>
+                        <select id="occupation">
+                            <option value="">Select occupation</option>
+                            <option value="construction">Construction</option>
+                            <option value="shipbuilding">Shipbuilding</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="mining">Mining</option>
+                            <option value="automotive">Automotive</option>
+                            <option value="military">Military</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Did you serve in the military? <span class="required">*</span></label>
+                        <div>
+                            <input type="radio" id="military-yes" name="military" value="yes" required>
+                            <label for="military-yes" style="display: inline-block; margin-right: 15px;">Yes</label>
+                            <input type="radio" id="military-no" name="military" value="no">
+                            <label for="military-no" style="display: inline-block;">No</label>
+                        </div>
+                    </div>
+                    <div class="navigation">
+                        <button class="btn btn-back" onclick="showStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button class="btn btn-next" onclick="showStep(4)">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="step" id="step4">
+                    <h2><i class="fas fa-dollar-sign"></i> Financial Impact</h2>
+                    <div class="form-group">
+                        <label for="medical-costs">Medical Expenses to Date ($)</label>
+                        <input type="number" id="medical-costs" min="0" placeholder="Enter total medical costs">
+                    </div>
+                    <div class="form-group">
+                        <label for="lost-income">Lost Income ($)</label>
+                        <input type="number" id="lost-income" min="0" placeholder="Enter lost income amount">
+                    </div>
+                    <div class="form-group">
+                        <label for="pain-suffering">Pain and Suffering (1-10 scale)</label>
+                        <div class="range-container">
+                            <input type="range" id="pain-suffering" min="1" max="10" value="5">
+                            <span class="range-value" id="pain-suffering-value">5</span>
+                        </div>
+                    </div>
+                    <div class="navigation">
+                        <button class="btn btn-back" onclick="showStep(3)"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button class="btn btn-next" onclick="submitForm()">See Results <i class="fas fa-chart-bar"></i></button>
+                    </div>
+                </div>
+                
+                <div class="step" id="step5">
+                    <div class="result">
+                        <h2><i class="fas fa-file-invoice-dollar"></i> Your Estimated Compensation</h2>
+                        <p>Based on your answers, mesothelioma settlements typically range $1.2M - $2.4M.</p>
+                        <div class="result-value" id="compensation-amount">$1,500,000</div>
+                        <p>A Bowmans intake specialist will call you within 5 minutes at <strong>(555) 867-5309</strong>.</p>
+                        
+                        <a href="tel:5558675309" class="btn btn-call"><i class="fas fa-phone"></i> Talk to Michael Bowman Now</a>
+                        
+                        <div class="result-note">
+                            <p><strong><i class="fas fa-exclamation-circle"></i> Disclaimer:</strong> This calculator provides only an estimate and should not be considered legal advice. Actual compensation may vary based on specific circumstances, jurisdiction, liable parties, and legal representation.</p>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <p><strong>Bowmans Attorney</strong><br>
+                            Michael Bowman, Esq.<br>
+                            1234 Commerce St, Suite 4200, Houston, TX 77002</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <h2><i class="fas fa-info-circle"></i> About Mesothelioma Claims</h2>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-balance-scale"></i> Understanding Compensation</h3>
+                    <p>Mesothelioma compensation typically includes economic damages (medical expenses, lost income) and non-economic damages (pain and suffering).</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-clipboard-list"></i> Why Choose Bowmans Attorney?</h3>
+                    <p>With over 20 years of experience in asbestos litigation, Michael Bowman has secured millions in compensation for mesothelioma victims.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-clock"></i> Time Limitations</h3>
+                    <p>Each state has different deadlines (statutes of limitation) for filing mesothelioma claims. It's important to consult with an attorney as soon as possible.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-hands-helping"></i> Next Steps</h3>
+                    <p>If you or a loved one has been diagnosed with mesothelioma, contact our office to discuss your legal options with Michael Bowman directly.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 Bowmans Attorney | <a href="/privacy" class="privacy-link">Do not sell my info</a> | Disclaimer: This calculator provides estimates only and is not legal advice.</p>
+            <p>Mesothelioma is a rare and aggressive cancer caused by exposure to asbestos.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize variables
+        let currentStep = 1;
+        const totalSteps = 5;
+        let formData = {};
+        
+        // Initialize slider values
+        document.getElementById('exposure-duration-value').textContent = document.getElementById('exposure-duration').value;
+        document.getElementById('pain-suffering-value').textContent = document.getElementById('pain-suffering').value;
+        
+        // Set hidden field values
+        window.addEventListener('load', function() {
+            // Capture UTM parameters from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            formData.utm_source = urlParams.get('utm_source') || '';
+            formData.utm_campaign = urlParams.get('utm_campaign') || '';
+            formData.utm_term = urlParams.get('utm_term') || '';
+            formData.gclid = urlParams.get('gclid') || '';
+            
+            // Capture additional data
+            formData.timestamp = new Date().toISOString();
+            formData.user_agent = navigator.userAgent;
+            formData.landing_page = window.location.href;
+        });
+        
+        function showStep(stepNumber) {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            document.getElementById(`step${stepNumber}`).classList.add('active');
+            
+            // Update progress bar
+            const progressPercentage = ((stepNumber - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progress').style.width = `${progressPercentage}%`;
+            
+            currentStep = stepNumber;
+            
+            // Scroll to top of calculator
+            document.querySelector('.calculator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        function validateContactInfo() {
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!email || !phone) {
+                alert('Please provide both email and phone number to continue.');
+                return;
+            }
+            
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Simple phone validation (at least 10 digits)
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 10) {
+                alert('Please enter a valid phone number with area code.');
+                return;
+            }
+            
+            // Save contact info
+            formData.email = email;
+            formData.phone = phone;
+            
+            showStep(3);
+        }
+        
+        function submitForm() {
+            // Collect all form data
+            formData.age = document.getElementById('age').value;
+            formData.state = document.getElementById('state').value;
+            formData.diagnosis_confirmed = document.getElementById('diagnosis-yes').checked;
+            formData.exposure_duration = document.getElementById('exposure-duration').value;
+            formData.occupation = document.getElementById('occupation').value;
+            formData.military_service = document.getElementById('military-yes').checked;
+            formData.medical_costs = document.getElementById('medical-costs').value || 0;
+            formData.lost_income = document.getElementById('lost-income').value || 0;
+            formData.pain_suffering = document.getElementById('pain-suffering').value;
+            
+            // Submit data to Zapier webhook
+            fetch('https://hooks.zapier.com/hooks/catch/XXXX/YYYY/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Data successfully sent to Zapier');
+                    showStep(5);
+                } else {
+                    console.error('Error sending data to Zapier');
+                    showStep(5); // Still show results even if submission fails
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showStep(5); // Still show results even if submission fails
+            });
+        }
+        
+        // Initialize slider value displays
+        document.getElementById('exposure-duration').addEventListener('input', function() {
+            document.getElementById('exposure-duration-value').textContent = this.value;
+        });
+        
+        document.getElementById('pain-suffering').addEventListener('input', function() {
+            document.getElementById('pain-suffering-value').textContent = this.value;
+        });
+    </script>
+</body>
+</html>
