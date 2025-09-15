@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mesothelioma Compensation Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1a6fa3;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2c3e50, #4a6b8a);
+            background-attachment: fixed;
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent);
+        }
+        
+        h1 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info {
+            flex: 1 1 300px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-form {
+            flex: 1 1 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .info-box {
+            margin-bottom: 2rem;
+        }
+        
+        .info-box h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-box h3 i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--dark);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .privacy-link {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .privacy-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-envelope"></i> Contact Us</h1>
+            <p class="tagline">Have questions about your mesothelioma compensation estimate or need assistance? We're here to help.</p>
+        </header>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-box">
+                    <h3><i class="fas fa-info-circle"></i> Before You Contact Us</h3>
+                    <p>For the fastest assistance with your potential claim, please use our <a href="/">Compensation Calculator</a> to get your free estimate and connect directly with our partner attorneys.</p>
+                    <p>For all other inquiries, please use the form or contact information on this page.</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3><i class="fas fa-envelope"></i> Email Us</h3>
+                    <p><strong>General Inquiries:</strong><br>
+                    <a href="mailto:contact@mesotheliomacompensationcalculator.com">contact@mesotheliomacompensationcalculator.com</a></p>
+                </div>
+                
+                <div class="info-box">
+                    <h3><i class="fas fa-shield-alt"></i> Privacy Note</h3>
+                    <p>Please do not send confidential or sensitive medical information via this contact form. For discussing the specifics of your case, you will be connected with a qualified attorney who can communicate securely.</p>
+                    <p>View our <a href="/privacy-policy/">Privacy Policy</a> for more information.</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2><i class="fas fa-paper-plane"></i> Send a Message</h2>
+                <!-- NETLIFY FORM: Add the 'netlify' attribute and a hidden bot field -->
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you">
+                    <p class="hidden">
+                        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+                    <div class="form-group">
+                        <label for="name">Your Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject <span class="required">*</span></label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="Calculator Help">Question about the Calculator</option>
+                            <option value="Website Issue">Website Technical Issue</option>
+                            <option value="Legal Inquiry">Legal Partnership Inquiry</option>
+                            <option value="General Question">General Question</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message <span class="required">*</span></label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 MesotheliomaCompensationCalculator.com | <a href="MesotheliomaCompensationCalculator.com/privacy-policy/" class="privacy-link">Privacy Policy</a> | <a href="MesotheliomaCompensationCalculator.com/disclaimer/" class="privacy-link">Disclaimer</a> | <a href="MesotheliomaCompensationCalculator.com/terms-of-service/" class="privacy-link">Terms of Service</a></p>
+            <p>Mesothelioma is a rare and aggressive cancer caused by exposure to asbestos.</p>
+        </footer>
+    </div>
+
+    <!-- Removed the custom form submission script -->
+</body>
+</html>
