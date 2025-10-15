@@ -708,17 +708,22 @@
                         
                         <div class="form-group">
                             <h3>Connect with Top Mesothelioma Attorneys</h3>
-                            <p>Get a free consultation to discuss your claim with experienced lawyers.</p>
-                              <form id="mesothelioma-form" action="https://formspree.io/f/xjkajazw" method="POST">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" placeholder="Enter your name">
-                            <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" placeholder="Enter your email" required>
-                            <div class="error-message" id="email-error">Please enter a valid email address</div>
-                            <label for="phone">Phone Number <span class="required">*</span></label>
-                            <input type="tel" id="phone" placeholder="Enter your phone number" required>
-                            <div class="error-message" id="phone-error">Please enter a valid phone number with area code</div>
-                            <button class="btn btn-call" onclick="submitLead()">Get Free Consultation <i class="fas fa-phone"></i></button>
+                               <p>Get a free consultation to discuss your claim with experienced lawyers.</p>
+    <form id="mesothelioma-form" action="https://formspree.io/f/xjkajazw" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        
+        <label for="email">Email Address <span class="required">*</span></label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <div class="error-message" id="email-error">Please enter a valid email address</div>
+        
+        <label for="phone">Phone Number <span class="required">*</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        <div class="error-message" id="phone-error">Please enter a valid phone number with area code</div>
+        
+        <button type="submit" class="btn btn-call">Get Free Consultation <i class="fas fa-phone"></i></button>
+    </form>
+                        
                         </div>
                         
                         <div class="navigation">
